@@ -1,6 +1,25 @@
 package com.TFTDragonlands.TFTDragonlands.TFTDragons;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Dragons {
+    @Id
+    @SequenceGenerator(
+            name = "tftdragonlands_sequence",
+            sequenceName = "tftdragonlands_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "tftdragonlands_sequence"
+    )
     private String name;
     private String trait;
     private int cost;
