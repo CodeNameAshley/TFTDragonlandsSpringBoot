@@ -1,14 +1,20 @@
 package com.TFTDragonlands.TFTDragonlands.TFTDragons;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class DragonsService {
+    private final DragonsRepository dragonsRepository;
 
-        public List<Dragons> getDragons() {
-            return List.of(new Dragons("Ao Shin", "Tempest", 10, 2460, 180 )
-            );
-        }
+    @Autowired
+    public DragonsService(DragonsRepository dragonsRepository) {
+        this.dragonsRepository = dragonsRepository;
+    }
+
+    public List<Dragons> getDragons() {
+            return dragonsRepository.findAll();
+    }
 
 }
