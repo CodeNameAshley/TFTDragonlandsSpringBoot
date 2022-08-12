@@ -10,6 +10,7 @@ public class DragonsService {
 
     @Autowired
     public DragonsService(DragonsRepository dragonsRepository) {
+
         this.dragonsRepository = dragonsRepository;
     }
 
@@ -17,4 +18,7 @@ public class DragonsService {
             return dragonsRepository.findAll();
     }
 
+    public void addNewDragon(Dragons dragon) {
+        System.out.println(dragon);
+    }
 }

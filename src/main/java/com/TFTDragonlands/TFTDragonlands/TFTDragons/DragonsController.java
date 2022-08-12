@@ -2,6 +2,8 @@ package com.TFTDragonlands.TFTDragonlands.TFTDragons;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,4 +25,12 @@ public class DragonsController {
 
         return dragonsService.getDragons();
     }
+
+    @PostMapping
+    public void registerNewDragon(@RequestBody Dragons dragon){
+        dragonsService.addNewDragon(dragon);
+    }
+
+
+
 }
