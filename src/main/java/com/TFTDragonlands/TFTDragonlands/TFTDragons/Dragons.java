@@ -1,6 +1,5 @@
 package com.TFTDragonlands.TFTDragonlands.TFTDragons;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,14 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Dragons {
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
     @Id
     @SequenceGenerator(
             name = "tftdragonlands_sequence",
