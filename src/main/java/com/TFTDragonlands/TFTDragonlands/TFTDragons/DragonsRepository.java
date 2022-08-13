@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface DragonsRepository
         extends JpaRepository<Dragons, Long> {
 
-    @Query("SELECT d FROM Dragons d WHERE d.trait = ?1")
-    Optional<Dragons> findDragonsByName(String trait);
+    @Query("SELECT d FROM Dragons d WHERE d.name = ?1")
+    Optional<Dragons> findDragonsByName(String name);
 }
