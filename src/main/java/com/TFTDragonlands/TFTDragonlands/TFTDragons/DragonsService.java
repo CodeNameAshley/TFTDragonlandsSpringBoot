@@ -26,6 +26,6 @@ public class DragonsService {
         if(dragonByName.isPresent()) {
             throw new IllegalStateException("This Dragon Already Exists");
         }
-        System.out.println(dragon);
+        dragonsRepository.save(dragon);
     }
 }
