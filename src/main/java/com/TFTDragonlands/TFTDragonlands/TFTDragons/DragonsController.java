@@ -35,7 +35,7 @@ public class DragonsController {
 
     @DeleteMapping(path="{dragonId}")
     public void deleteDragon(@PathVariable("dragonId") Long dragonId) {
-        dragonsService.deleteDragon(dragonId);
+        dragonsService.deleteExistingDragon(dragonId);
     }
 
 }

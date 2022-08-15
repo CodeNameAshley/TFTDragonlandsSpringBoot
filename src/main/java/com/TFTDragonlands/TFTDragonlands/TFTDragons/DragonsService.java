@@ -29,9 +29,9 @@ public class DragonsService {
         dragonsRepository.save(dragon);
     }
 
-    public void deleteDragon(Long dragonId) {
-        boolean doesDragonIdExist = dragonsRepository.existsById(dragonId);
-        if (!doesDragonIdExist) {
+    public void deleteExistingDragon(Long dragonId) {
+        boolean doesDragonExist = dragonsRepository.existsById(dragonId);
+        if (!doesDragonExist) {
             throw new IllegalStateException("Dragon with " + dragonId + " does not exist!");
         }
         dragonsRepository.deleteById(dragonId);
