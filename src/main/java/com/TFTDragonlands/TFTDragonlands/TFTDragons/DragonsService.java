@@ -41,20 +41,20 @@ public class DragonsService {
 
     @Transactional
     public void updateAnExistingDragon(Long dragonId, String updatedDragonName, String updatedDragonTrait) {
-        Dragons dragon = dragonsRepository.findById(dragonId).orElseThrow(() -> new IllegalStateException(
+        Dragons existingDragon = dragonsRepository.findById(dragonId).orElseThrow(() -> new IllegalStateException(
                 "Dragon with " + dragonId + " does not exist"
         ));
 
-        if(updatedDragonName != null && !updatedDragonName.isEmpty() && !Objects.equals(dragon.getName(), updatedDragonName)) {
+        if(updatedDragonName != null && !updatedDragonName.isEmpty() && !existingDragon.getName().equals(updatedDragonName)) {
             Optional<Dragons> getExistingDragonsByName = dragonsRepository.findDragonsByName(updatedDragonName);
             if(getExistingDragonsByName.isPresent()){
                 throw new IllegalStateException("A Dragon with the name " + updatedDragonName + " already exists!");
             }
-            dragon.setName(updatedDragonName);
+            existingDragon.setName(updatedDragonName);
         }
 
-        if(updatedDragonTrait != null && !updatedDragonTrait.isEmpty() && !Objects.equals(dragon.getTrait(), updatedDragonTrait)) {
-            dragon.setTrait(updatedDragonTrait);
+        if(updatedDragonTrait != null && !updatedDragonTrait.isEmpty() && !existingDragon.getTrait().equals(updatedDragonTrait)) {
+            existingDragon.setTrait(updatedDragonTrait);
         }
     }
 }

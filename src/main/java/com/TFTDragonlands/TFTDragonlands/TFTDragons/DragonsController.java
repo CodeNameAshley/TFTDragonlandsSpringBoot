@@ -31,8 +31,8 @@ public class DragonsController {
     }
 
     @PostMapping
-    public void registerNewDragon(@RequestBody Dragons dragon){
-        dragonsService.addNewDragon(dragon);
+    public void registerNewDragon(@RequestBody Dragons newDragon){
+        dragonsService.addNewDragon(newDragon);
     }
 
     @DeleteMapping(path="{dragonId}")
@@ -42,9 +42,9 @@ public class DragonsController {
 
     @PutMapping(path="{dragonId}")
     public void updateDragonDetails(@PathVariable("dragonId") Long dragonId,
-                                    @RequestParam(required = false) String name,
-                                    @RequestParam(required = false) String trait) {
-        dragonsService.updateAnExistingDragon(dragonId, name, trait);
+                                    @RequestParam(required = false) String updatingName,
+                                    @RequestParam(required = false) String updatingTrait) {
+        dragonsService.updateAnExistingDragon(dragonId, updatingName, updatingTrait);
     }
 
 }
