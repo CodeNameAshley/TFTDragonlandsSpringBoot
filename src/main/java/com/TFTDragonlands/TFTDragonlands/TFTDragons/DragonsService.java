@@ -2,8 +2,10 @@ package com.TFTDragonlands.TFTDragonlands.TFTDragons;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -29,11 +31,30 @@ public class DragonsService {
         dragonsRepository.save(dragon);
     }
 
-    public void deleteExistingDragon(Long dragonId) {
+    public void deleteAnExistingDragon(Long dragonId) {
         boolean doesDragonExist = dragonsRepository.existsById(dragonId);
         if (!doesDragonExist) {
             throw new IllegalStateException("Dragon with " + dragonId + " does not exist!");
         }
         dragonsRepository.deleteById(dragonId);
+    }
+
+    @Transactional
+    public void updateAnExistingDragon(Long dragonId, String updatedDragonName, String updatedDragonTrait) {
+        Dragons dragon = dragonsRepository.findById(dragonId).orElseThrow(() -> new IllegalStateException(
+                "Dragon with " + dragonId + " does not exist"
+        ));
+
+        if(updatedDragonName != null && !updatedDragonName.isEmpty() && !Objects.equals(dragon.getName(), updatedDragonName)) {
+            Optional<Dragons> getExistingDragonsByName = dragonsRepository.findDragonsByName(updatedDragonName);
+            if(getExistingDragonsByName.isPresent()){
+                throw new IllegalStateException("A Dragon with the name " + updatedDragonName + " already exists!");
+            }
+            dragon.setName(updatedDragonName);
+        }
+
+        if(updatedDragonTrait != null && !updatedDragonTrait.isEmpty() && !Objects.equals(dragon.getTrait(), updatedDragonTrait)) {
+            dragon.setTrait(updatedDragonTrait);
+        }
     }
 }

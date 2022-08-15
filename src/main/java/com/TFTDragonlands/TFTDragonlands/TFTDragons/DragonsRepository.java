@@ -12,4 +12,5 @@ public interface DragonsRepository
 
     @Query("SELECT d FROM Dragons d WHERE d.name = ?1")
     Optional<Dragons> findDragonsByName(String name);
+
 }

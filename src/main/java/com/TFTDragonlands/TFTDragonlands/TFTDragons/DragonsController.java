@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -35,7 +37,14 @@ public class DragonsController {
 
     @DeleteMapping(path="{dragonId}")
     public void deleteDragon(@PathVariable("dragonId") Long dragonId) {
-        dragonsService.deleteExistingDragon(dragonId);
+        dragonsService.deleteAnExistingDragon(dragonId);
+    }
+
+    @PutMapping(path="{dragonId}")
+    public void updateDragonDetails(@PathVariable("dragonId") Long dragonId,
+                                    @RequestParam(required = false) String name,
+                                    @RequestParam(required = false) String trait) {
+        dragonsService.updateAnExistingDragon(dragonId, name, trait);
     }
 
 }
