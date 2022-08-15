@@ -28,4 +28,12 @@ public class DragonsService {
         }
         dragonsRepository.save(dragon);
     }
+
+    public void deleteDragon(Long dragonId) {
+        boolean doesDragonIdExist = dragonsRepository.existsById(dragonId);
+        if (!doesDragonIdExist) {
+            throw new IllegalStateException("Dragon with " + dragonId + " does not exist!");
+        }
+        dragonsRepository.deleteById(dragonId);
+    }
 }

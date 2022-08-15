@@ -21,7 +21,7 @@ public class Dragons {
             generator = "tftdragonlands_sequence"
     )
 
-    private Long id;
+    private Long Id;
     private String name;
     private String trait;
     private int cost;
@@ -37,7 +37,7 @@ public class Dragons {
                    int cost,
                    int health,
                    int mana ) {
-        this.id = id;
+        this.Id = id;
         this.name = name;
         this.cost = cost;
         this.health = health;
@@ -58,11 +58,11 @@ public class Dragons {
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getName() {
@@ -118,7 +118,7 @@ public class Dragons {
     @Override
     public String toString() {
         return "Dragons{" +
-                "id=" + id +
+                "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", trait='" + trait + '\'' +
                 ", cost=" + cost +
