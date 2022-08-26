@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DragonService {
+public class DragonsService {
     private final DragonsRepository dragonsRepository;
 
     @Autowired
-    public DragonService(DragonsRepository dragonsRepository) {
+    public DragonsService(DragonsRepository dragonsRepository) {
 
         this.dragonsRepository = dragonsRepository;
     }

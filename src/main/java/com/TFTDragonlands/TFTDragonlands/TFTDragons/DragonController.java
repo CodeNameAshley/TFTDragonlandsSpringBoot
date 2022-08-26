@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping(path = "api/v1/dragons")
 public class DragonController {
 
-    private final DragonService dragonsService;
+    private final DragonsService dragonsService;
 
     @Autowired
-    public DragonController(DragonService dragonsService) {
+    public DragonController(DragonsService dragonsService) {
         this.dragonsService = dragonsService;
     }
 

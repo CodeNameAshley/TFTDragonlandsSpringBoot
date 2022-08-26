@@ -11,8 +11,13 @@ import java.util.Optional;
 public interface DragonsRepository
         extends JpaRepository<Dragon, Long> {
 
-    @Modifying
-    @Query("SELECT d FROM Dragon d WHERE d.name = ?1")
+    @Query("" +
+            "SELECT CASE WHEN COUNT(d) > 0 THEN " +
+            "TRUE ELSE FALSE END " +
+            "FROM Dragon d " +
+            "WHERE d.name = ?1"
+    )
+
     Optional<Dragon> findDragonsByName(String name);
 
 }
