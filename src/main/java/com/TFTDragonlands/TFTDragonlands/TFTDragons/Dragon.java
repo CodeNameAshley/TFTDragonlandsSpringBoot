@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Dragons {
+public class Dragon {
     @Id
     @SequenceGenerator(
             name = "tftdragonlands_sequence",
@@ -28,15 +28,15 @@ public class Dragons {
     private int health;
     private int mana;
 
-    public Dragons() {
+    public Dragon() {
     }
 
-    public Dragons(Long id,
-                   String name,
-                   String trait,
-                   int cost,
-                   int health,
-                   int mana ) {
+    public Dragon(Long id,
+                  String name,
+                  String trait,
+                  int cost,
+                  int health,
+                  int mana ) {
         this.Id = id;
         this.name = name;
         this.cost = cost;
@@ -45,11 +45,11 @@ public class Dragons {
         this.trait = trait;
     }
 
-    public Dragons(String name,
-                   String trait,
-                   int cost,
-                   int health,
-                   int mana) {
+    public Dragon(String name,
+                  String trait,
+                  int cost,
+                  int health,
+                  int mana) {
         this.name = name;
         this.trait = trait;
         this.cost = cost;
@@ -117,7 +117,7 @@ public class Dragons {
 
     @Override
     public String toString() {
-        return "Dragons{" +
+        return "Dragon{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", trait='" + trait + '\'' +

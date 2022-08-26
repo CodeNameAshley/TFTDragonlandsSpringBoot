@@ -15,23 +15,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/dragons")
-public class DragonsController {
+public class DragonController {
 
-    private final DragonsService dragonsService;
+    private final DragonService dragonsService;
 
     @Autowired
-    public DragonsController(DragonsService dragonsService) {
+    public DragonController(DragonService dragonsService) {
         this.dragonsService = dragonsService;
     }
 
     @GetMapping
-    public List<Dragons> getDragons() {
+    public List<Dragon> getDragons() {
 
         return dragonsService.getDragons();
     }
 
     @PostMapping
-    public void registerNewDragon(@RequestBody Dragons newDragon){
+    public void registerNewDragon(@RequestBody Dragon newDragon){
         dragonsService.addNewDragon(newDragon);
     }
 
